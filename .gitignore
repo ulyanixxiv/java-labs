@@ -1,0 +1,18 @@
+# Compiled files
+*.class
+*.jar
+target/
+**/target/
+
+# IDE files
+.idea/workspace.xml
+.idea/shelf/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
