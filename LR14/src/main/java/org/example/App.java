@@ -7,20 +7,11 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("================================================================================");
-        System.out.println("          ЛАБОРАТОРНАЯ РАБОТА № 14: ФАЙЛОВЫЙ ВВОД И ВЫВОД В JAVA");
-        System.out.println("                                ВАРИАНТ 7");
-        System.out.println("================================================================================\n");
 
-        // Папка для выходных файлов лабораторной работы
         String dataDir = "data" + File.separator;
         new File(dataDir).mkdirs();
 
         try {
-            // -------------------------------------------------------------------------
-            // ЗАДАНИЕ 1: Файл с информацией о семье, метаданные и чтение
-            // -------------------------------------------------------------------------
-            System.out.println("--- ЗАДАНИЕ 1: Информация о семье и свойства файла ---");
             FamilyFileManager familyManager = new FamilyFileManager(dataDir + "family_info.txt");
             familyManager.addMember(new FamilyMember("Александр", "Отец", 48, "Инженер-конструктор"));
             familyManager.addMember(new FamilyMember("Елена", "Мать", 46, "Преподаватель математики"));
@@ -34,15 +25,8 @@ public class App {
             System.out.println();
             familyManager.printFileContent();
 
-            System.out.println("\n--------------------------------------------------------------------------------");
-
-            // -------------------------------------------------------------------------
-            // ЗАДАНИЕ 2: Запись 10 целых чисел в файл 'f', чтение и подсчет положительных
-            // -------------------------------------------------------------------------
-            System.out.println("--- ЗАДАНИЕ 2: 10 целых чисел в файл 'f', подсчет положительных ---");
             NumberFileManager numberManager = new NumberFileManager(dataDir + "task2_f.txt");
 
-            // 10 целых чисел (содержат положительные, отрицательные и ноль)
             List<Integer> inputNumbers = Arrays.asList(15, -4, 28, 0, -12, 7, 42, -9, 3, -1);
             System.out.println("1. Исходные 10 чисел: " + inputNumbers);
 
@@ -55,12 +39,6 @@ public class App {
             int positiveCount = numberManager.countPositive(readNumbers);
             System.out.println("4. Количество положительных чисел (> 0): " + positiveCount);
 
-            System.out.println("\n--------------------------------------------------------------------------------");
-
-            // -------------------------------------------------------------------------
-            // ЗАДАНИЕ 3: Генерация 'f' со случайными числами, разделение на 'g' (< 100) и 'h' (>= 100)
-            // -------------------------------------------------------------------------
-            System.out.println("--- ЗАДАНИЕ 3: Разделение случайных чисел на файлы 'g' (< 100) и 'h' (>= 100) ---");
             NumberSplitter splitter = new NumberSplitter(
                     dataDir + "task3_f.txt",
                     dataDir + "task3_g.txt",
@@ -80,12 +58,6 @@ public class App {
             System.out.println("   -> Файл 'g' (числа < 100)  [всего: " + numbersG.size() + "]: " + numbersG);
             System.out.println("   -> Файл 'h' (числа >= 100) [всего: " + numbersH.size() + "]: " + numbersH);
 
-            System.out.println("\n--------------------------------------------------------------------------------");
-
-            // -------------------------------------------------------------------------
-            // ЗАДАНИЕ 4: 15 вещественных значений концентрации вещества, средняя концентрация
-            // -------------------------------------------------------------------------
-            System.out.println("--- ЗАДАНИЕ 4: 15 вещественных концентраций, расчет средней ---");
             ConcentrationManager concManager = new ConcentrationManager(dataDir + "concentrations.txt");
 
             // 15 вещественных значений концентрации вещества (в мг/л или %)
@@ -106,15 +78,8 @@ public class App {
             double avgConc = concManager.calculateAverage(readConc);
             System.out.printf("3. Средняя концентрация вещества: %.4f%n", avgConc);
 
-            System.out.println("\n--------------------------------------------------------------------------------");
-
-            // -------------------------------------------------------------------------
-            // ЗАДАНИЕ 5: 10 целых чисел в 'f', количество чисел, кратных 2 и 3 одновременно
-            // -------------------------------------------------------------------------
-            System.out.println("--- ЗАДАНИЕ 5: 10 целых чисел в 'f', подсчет кратных 2 и 3 (т.е. кратных 6) ---");
             DivisibilityAnalyzer divAnalyzer = new DivisibilityAnalyzer(dataDir + "task5_f.txt");
 
-            // 10 целых чисел
             List<Integer> task5Numbers = Arrays.asList(12, 15, 18, 7, 24, 30, 25, 36, 14, 42);
             divAnalyzer.saveNumbers(task5Numbers);
 
@@ -124,10 +89,6 @@ public class App {
             List<Integer> divisibleNumbers = divAnalyzer.findDivisibleBy2And3(readTask5);
             System.out.println("2. Числа, кратные 2 и 3 одновременно: " + divisibleNumbers);
             System.out.println("3. Количество таких чисел: " + divisibleNumbers.size());
-
-            System.out.println("\n================================================================================");
-            System.out.println("              ВСЕ ЗАДАНИЯ ЛАБОРАТОРНОЙ РАБОТЫ № 14 ВЫПОЛНЕНЫ!");
-            System.out.println("================================================================================");
 
         } catch (IOException e) {
             System.err.println("Ошибка при работе с файлами: " + e.getMessage());

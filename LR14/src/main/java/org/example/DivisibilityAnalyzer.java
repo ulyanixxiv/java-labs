@@ -24,9 +24,6 @@ public class DivisibilityAnalyzer {
         this.filePath = filePath;
     }
 
-    /**
-     * Запись 10 целых чисел в файл 'f'.
-     */
     public void saveNumbers(List<Integer> numbers) throws IOException {
         File file = new File(filePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
